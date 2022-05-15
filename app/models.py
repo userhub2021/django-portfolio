@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.db import models
 
 # Create your models here.
@@ -49,3 +50,20 @@ class Education(models.Model):
 
     def __str__(self) -> str:
         return self.coures
+
+class Software(models.Model):
+    name = models.CharField('ソフトウェア', max_length=100)
+    level = models.CharField('レベル', max_length=100)
+    percentage = models.IntegerField('パーセンテージ')     
+
+    def __str__(self):
+        return self.name
+
+class Technical(models.Model): 
+     name = models.CharField('ソフトウェア', max_length=100)
+     level = models.CharField('レベル', max_length=100)
+     percentage = models.IntegerField('パーセンテージ')     
+
+     def __str__(self):
+        return self.name
+          

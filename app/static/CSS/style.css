@@ -106,3 +106,35 @@ main {
 .icon {
     padding: 10px 8px;
 }
+
+.stra-rating {
+    position: relative;
+    font-size: 30px;
+    word-wrap: normal!important;
+}
+
+.stra-rating-front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    color: #EE6C4D;
+}
+
+.stra-rating-back { 
+    color: #ccc;
+}
+
+.contact {
+    max-width: 500px;
+
+}
+
+.form-control:focus {
+    border-color: hsl(12, 83%, 62%);
+    box-shadow: none;
+}
+
+.card {
+    border: none;
+}
