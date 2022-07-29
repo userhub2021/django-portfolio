@@ -1,4 +1,3 @@
-from unicodedata import name
 from django.db import models
 
 # Create your models here.
@@ -19,6 +18,14 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name
+
+class Concept(models.Model):
+    title = models.CharField('コンセプト名', max_length=100, null=True, blank=True)
+    explanation = models.TextField('説明')
+    github = models.CharField('github', max_length=100, null=True, blank=True)
+
+    def __str__(self) -> str:
+        return self.title
 
 class Work(models.Model):
     title = models.CharField("タイトル", max_length=100)

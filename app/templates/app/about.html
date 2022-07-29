@@ -1,6 +1,17 @@
 {% extends 'app/base.html' %}
 {% block content %}
 
+<h3 class="mb-4">Concept</h3>
+<div class="mb-5">
+    {% for concept in concept_data %}
+        <div class="d-flex justify-content-between">
+            <h4><span class="small text-secondary"> - {{ concept.title }}</span></h4>
+            <br>
+        </div>
+        <p class="mb-1">{{ concept.explanation|linebreaksbr }}</p>
+        <hr>
+    {% endfor %}     
+</div>
 <h3 class="mb-4">Profile</h3>
 <div class="mb-5">
     <div class="row">
@@ -36,11 +47,12 @@
     </div>
 </div>
 
+
 <h3 class="mb-4">Experience</h3>
 <div class="mb-5">
     {% for experience in experience_data %}
         <div class="d-flex justify-content-between">
-            <h5>{{ experience.occupatino }}<span class="small text-secondary"> - {{ experience.company}}</span></h5>
+            <h5>{{ experience.occupation }}<span class="small text-secondary"> - {{ experience.company}}</span></h5>
             <p class="mb-1">{{ experience.period }}</p>
         </div>
         <p class="mb-1">{{ experience.description|linebreaksbr }}</p>
@@ -68,11 +80,11 @@
     <div class="row">
         {% for software in software_data %}
             <div class="col-6 col-md-3">
-                <h5 class="mb-0">{{ software.name }} <span class="small secondary"> - {{ software.level }}</span></h5>
+                <h5 class="mb-0"><span class="small secondary"> - {{ software.name }}</span></h5>
                 <div class="d-flex flex-row">
                     <div class="star-rating">
-                        <div class="star-rating-front" style="width: {{ software.percentage }}%">★★★★★</div>
-                        <div class="star-rating-back">★★★★★</div>
+                        <div class="star-rating-front" style="width: {{ software.percentage }}%"></div>
+                        <div class="star-rating-back">★★★</div>
                     </div>
                 </div>
             </div>
@@ -85,12 +97,13 @@
     <div class="row">
         {% for technical in technical_data %}
             <div class="col-6 col-md-3">
-                <h5 class="mb-0">{{ Technical.name }} <span class="small secondary"> - {{ technical.level }}</span></h5>
+                <h5 class="mb-0"><span class="small secondary"> - {{ technical.name }}</span></h5>
                 <div class="d-flex flex-row">
-                    <div class="star-rating">
-                        <div class="star-rating-front" style="width: {{ technical.percentage }}%">★★★★★</div>
-                        <div class="star-rating-back">★★★★★</div>
-                    </div>
+                    <p class="mb-1">{{ technical.level }}</p>
+                </div>
+                <div class="star-rating">
+                    <div class="star-rating-front" style="width: 30px;" >{{ technical.percentage }} %</div>
+                    <div class="star-rating-back">★★★</div>
                 </div>
             </div>
         {% endfor %}

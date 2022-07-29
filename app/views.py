@@ -2,7 +2,7 @@ import email
 from django.shortcuts import render, redirect
 from django.views.generic import View
 from .forms import ContactForm
-from .models import Profile, Work, Education, Experience, Software, Technical
+from .models import Concept, Profile, Work, Education, Experience, Software, Technical
 from django.conf import settings
 from django.core.mail import BadHeaderError, EmailMessage
 from django.http import HttpResponse
@@ -15,7 +15,7 @@ class IndexView(View):
         profile_data = Profile.objects.all()
         if profile_data.exists():
             profile_data = profile_data.order_by('-id')[0]
-            work_data = Work.objects.order_by('-id')
+        work_data = Work.objects.order_by('-id')
         return render(request, 'app/index.html', {
             'profile_data': profile_data,
             'work_data': work_data,
@@ -25,20 +25,23 @@ class DetailView(View):
     def get(self, request, *args, **kwargs):
         work_data = Work.objects.get(id=self.kwargs['pk'])
         return render(request, 'app/detail.html', {
-            'work_data': work_data 
+            'work_data': work_data, 
         })        
 
 class AboutView(View):
     def get(self, request, *args, **kwargs):
         profile_data = Profile.objects.all()
-        if profile_data.exists():
-            profile_data = profile_data.order_by('-id')[0]
-            experience_data = Experience.objects.order_by('-id')
-            education_data = Education.objects.order_by('-id')
-            software_data = Software.objects.order_by('-id')
-            technical_data = Technical.objects.order_by('-id')
+        concept_data = Concept.objects.all()
+        if profile_data or concept_data.exists():
+           profile_data = profile_data.order_by('-id')[0]
+        concept_data = Concept.objects.order_by('-id')   
+        experience_data = Experience.objects.order_by('-id')
+        education_data = Education.objects.order_by('-id')
+        software_data = Software.objects.order_by('-id')
+        technical_data = Technical.objects.order_by('-id')
         return render(request, 'app/about.html', {
             'profile_data':profile_data,
+            'concept_data':concept_data,
             'experience_data':experience_data,
             'education_data':education_data,
             'software_data':software_data,
