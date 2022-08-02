@@ -107,13 +107,13 @@ main {
     padding: 10px 8px;
 }
 
-.stra-rating {
+.star-rating {
     position: relative;
     font-size: 30px;
     word-wrap: normal!important;
 }
 
-.stra-rating-front {
+.star-rating-front {
     position: absolute;
     top: 0;
     left: 0;
@@ -121,7 +121,7 @@ main {
     color: #EE6C4D;
 }
 
-.stra-rating-back { 
+.star-rating-back { 
     color: #ccc;
 }
 
